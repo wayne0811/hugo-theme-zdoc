@@ -8,7 +8,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Setup new site
+        uses: lowply/build-hugo@v0.78.0
+        with:
+          args: new site .
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          path: themes/zdoc
       - name: Build Hugo
         # uses: lowply/build-hugo@d6abd4bd740a38278f858fb383841e5e6af8d985
         uses: lowply/build-hugo@v0.78.0
+        with:
+          args: --theme zdoc
