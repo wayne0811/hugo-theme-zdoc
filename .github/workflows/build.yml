@@ -12,6 +12,9 @@ jobs:
         uses: lowply/build-hugo@v0.78.0
         with:
           args: new site .
+      - name: Fix permissions
+        run: |
+          sudo chown -R $USER: .
       - name: Checkout
         uses: actions/checkout@v2
         with:
